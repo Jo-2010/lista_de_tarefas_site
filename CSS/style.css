@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    font-family: "Google Sans", Arial, Helvetica, sans-serif;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: rgb(240, 240, 240);
+}
+.botaoTema {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+.botaoTema:hover, .botaoFiltrar:hover, .botaoLixeira:hover {
+    transition: 0.2s ease;
+    background-color: rgb(210, 210, 210);
+}
+.containerListaDeTarefas {
+    height: 90%;
+    width: 90%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.250);
+    background-color: white;
+}
+.cabecalhoListaDeTarefas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.botaoFiltrar, .botaoLixeira {
+    height: 40px;
+    width: 40px;
+    margin-left: 5px;
+    margin-right: 10px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.tituloListaDeTarefas {
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+.containerInputsBotoes {
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 5px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    'inputTarefas botaoAdicionarTarefa'
+    'botaoExcluirTarefa botaoExcluirTarefa';
+}
+.inputTarefas {
+    height: 2.5rem;
+    padding: 0.4rem;
+    font-size: 1.05rem;
+    grid-area: inputTarefas;
+}
+.botaoAdicionarTarefa {
+    height: 2.5rem;
+    grid-area: botaoAdicionarTarefa;
+}
+.botaoLimparTarefas {
+    height: 2.5rem;
+    grid-area: botaoExcluirTarefa;
+}
