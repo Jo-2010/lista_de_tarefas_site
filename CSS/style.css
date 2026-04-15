@@ -16,7 +16,7 @@ html, body {
 .botaoTema {
     height: 30px;
     width: 30px;
-    border-radius: 40px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,6 +35,8 @@ html, body {
     border-radius: 10px;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.250);
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 .cabecalhoListaDeTarefas {
     display: flex;
@@ -46,7 +48,8 @@ html, body {
     width: 40px;
     margin-left: 10px;
     margin-right: 10px;
-    border-radius: 40px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +84,7 @@ html, body {
     border-radius: 5px;
     font-size: 0.9rem;
     color: white;
-    background-color: rgb(0, 255, 0);
+    background-color: rgb(0, 230, 0);
     cursor: pointer;
     grid-area: botaoAdicionarTarefa;
 }
@@ -99,3 +102,40 @@ html, body {
     transition: 0.3s ease;
     opacity: 0.875;
 }
+.containerMensagensExitoErro {
+    height: 50px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerItensTarefa {
+    margin: 0 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    overflow-y: auto;
+}
+.itemTarefa {
+    height: 60px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(230, 230, 230);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.textosTarefa {
+    border: 1px solid green;
+    width: fit-content;
+}
+/* Classes não usadas ainda, auxiliares posteriormente na dinâmica e interatividade*/
+.mensagemExito {
+    color: rgb(0, 230, 0);
+}
+.mensagemErro {
+    color: red;
+}
+/*---------------*/
