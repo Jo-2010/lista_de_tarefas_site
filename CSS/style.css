@@ -14,15 +14,15 @@ html, body {
     background-color: rgb(240, 240, 240);
 }
 .botaoTema {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border-radius: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 2.5px;
+    left: 2.5px;
     cursor: pointer;
 }
 .botaoTema:hover, .botaoFiltrar:hover, .botaoLixeira:hover {
@@ -44,7 +44,7 @@ html, body {
 .botaoFiltrar, .botaoLixeira {
     height: 40px;
     width: 40px;
-    margin-left: 5px;
+    margin-left: 10px;
     margin-right: 10px;
     border-radius: 40px;
     display: flex;
@@ -70,14 +70,32 @@ html, body {
 .inputTarefas {
     height: 2.5rem;
     padding: 0.4rem;
-    font-size: 1.05rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 0.9rem;
     grid-area: inputTarefas;
 }
 .botaoAdicionarTarefa {
     height: 2.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: rgb(0, 255, 0);
+    cursor: pointer;
     grid-area: botaoAdicionarTarefa;
 }
 .botaoLimparTarefas {
     height: 2.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: red;
+    cursor: pointer;
     grid-area: botaoExcluirTarefa;
+}
+.botaoAdicionarTarefa:hover, .botaoLimparTarefas:hover {
+    transition: 0.3s ease;
+    opacity: 0.875;
 }
