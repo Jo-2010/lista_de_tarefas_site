@@ -98,9 +98,9 @@ html, body {
     cursor: pointer;
     grid-area: botaoExcluirTarefa;
 }
-.botaoAdicionarTarefa:hover, .botaoLimparTarefas:hover {
+.botaoAdicionarTarefa:hover, .botaoLimparTarefas:hover, .botaoOpcaoItemTarefa:hover {
     transition: 0.3s ease;
-    opacity: 0.875;
+    opacity: 0.8;
 }
 .containerMensagensExitoErro {
     height: 50px;
@@ -121,17 +121,39 @@ html, body {
     height: 60px;
     padding: 10px;
     border-radius: 5px;
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(210, 210, 210);
     flex-shrink: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .textosTarefa {
-    border: 1px solid green;
     width: fit-content;
 }
-/* Classes não usadas ainda, auxiliares posteriormente na dinâmica e interatividade*/
+.botoesItemTarefa {
+    height: 35px;
+    display: flex;
+    gap: 5px;
+}
+.botaoOpcaoItemTarefa {
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.botaoHierarquiaTarefa {
+    background-color: blue;
+    color: white;
+}
+.botaoEditarTarefa {
+    background-color: rgb(0, 230, 0);
+    color: white;
+}
+.botaoLimparTarefa {
+    background-color: red;
+    color: white;
+}
+/* Classes pra interatividade JS*/
 .mensagemExito {
     color: rgb(0, 230, 0);
 }
