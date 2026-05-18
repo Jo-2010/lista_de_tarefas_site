@@ -8,40 +8,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="CSS/variaveis.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/print.css">
-    <title>Google lista de tarefas</title>
+    <link rel="stylesheet" href="CSS/tooltips.css">
+    <title>Google tarefas</title>
 </head>
 <body>
-    <div class="botaoTema"><i class="fa-solid fa-moon"></i></div>
+    <button class="botaoTema" id="botaoTema" data-tooltip="Trocar tema">
+        <i class="fa-solid fa-moon"></i>
+    </button>
     <main class="containerListaDeTarefas">
         <header class="cabecalhoListaDeTarefas">
-            <div class="botaoFiltrar"><i class="fa-solid fa-magnifying-glass fa-lg"></i></div>
-            <h1 class="tituloListaDeTarefas">LISTA DE TAREFAS</h1>
-            <div class="botaoLixeira"><i class="fa-solid fa-trash-can fa-lg"></i></div>
+            <button class="botaoFiltrar" data-tooltip="Pesquisar tarefas"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <h1 class="tituloListaDeTarefas">LISTA DE TAREFAS 📋</h1>
+            <button class="botaoLixeira" data-tooltip="Abrir lixeira">
+                <i class="fa-solid fa-trash-can"></i>
+                <span class="notificacaoLixeira" id="notificacaoLixeira"></span>
+            </button>
         </header>
         <div class="containerInputsBotoes">
-            <input type="text" name="tarefa" id="tarefaUsuario" class="inputTarefas" placeholder="Nova tarefa...">
-            <button class="botaoAdicionarTarefa">Adicionar tarefa</button>
-            <button class="botaoLimparTarefas">Limpar tarefas</button>
+            <div class="inputNovasTarefas" id="divInputNovaTarefa"><input type="text" name="novaTarefa" id="novaTarefaUsuario" placeholder="Nova tarefa..."><button class="botaoLimparInput" tabindex="0" data-tooltip="Limpar texto"><i class="fa-solid fa-circle-xmark fa-xl"></i></button></div>
+            <button class="botaoAdicionarTarefa" id="botaoAdicionarTarefa">Adicionar tarefa</button>
+            <button class="botaoLimparTarefas" id="botaoLimparTarefas">Limpar tarefas</button>
         </div>
-        <div class="containerMensagensExitoErro">
-            <span class="mensagemErro">Não envie algo vazio !!!</span>
+        <div class="containerMensagensExitoErro" id="containerMensagensExitoErro">
+            <span></span>
         </div>
-        <div class="containerItensTarefa">
-            <article class="itemTarefa">
-                <div class="textosTarefa">
-                    <span>1.</span>
-                    <span>Varrer a casa</span>
-                </div>
-                <div class="botoesItemTarefa">
-                    <button class="botaoOpcaoItemTarefa botaoHierarquiaTarefa"><i class="fa-solid fa-list-ol fa-lg"></i></button>
-                    <button class="botaoOpcaoItemTarefa botaoEditarTarefa"><i class="fa-solid fa-pen-to-square fa-lg"></i></button>
-                    <button class="botaoOpcaoItemTarefa botaoLimparTarefa"><i class="fa-solid fa-trash fa-lg"></i></button>
-                </div>
-            </article>
+        <div class="containerItensTarefa" id="containerItensTarefa">
+            <span class="mensagemListaVazia">Nenhuma tarefa foi adicionada...</span>
         </div>
     </main>
-    <script src="JS/script.js"></script>
+    <script src="JS/trocarTema.js"></script>
+    <script src="JS/listaPrincipal.js"></script>
+    <script src="JS/utils.js"></script>
+    <script src="JS/iniciarDados.js"></script>
 </body>
 </html>
