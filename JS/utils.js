@@ -11,7 +11,7 @@ function adicionarDadosListaPrincipal(IdTarefa, prioridadeTarefa, textoTarefa) {
 function adicionarDadosLixeira(IdTarefa, textoTarefa) {
     tarefas.lixeira.push({
         ID: IdTarefa,
-        texto: textoTarefa
+        texto: textoTarefa.trim()
     });
 
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
