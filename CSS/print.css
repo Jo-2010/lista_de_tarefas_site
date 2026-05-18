@@ -1,0 +1,34 @@
+@media print {
+    .tituloListaDeTarefas {
+        font-size: 22pt;
+    }
+    .tituloListaDeTarefas, .itemTarefa span {
+        color: black !important;
+    }
+    .botaoFiltrar, .botaoLixeira, .botaoListaPrincipal, .botaoFiltrarLixeira {
+        visibility: hidden;
+        /*Deixa os escondidos, mas ainda permanecem lá para manter harmonia de design na impressão*/
+    }
+    .botaoTema, .containerInputsBotoes, .containerMensagensExitoErro, .botoesItemTarefa, .textosTarefaEdicaoTexto i, .textosTarefaEdicaoHierarquia i, .itemTarefaEdicaoTexto button, .itemTarefaEdicaoHierarquia button  {
+        display: none;
+        /*Tirar itens da ordem de tabulação do html*/
+    }
+    .caixaCheckImpressao {
+        display: block;
+        /*Fazer a caixa "check" aparecer*/
+    }
+    .containerListaDeTarefas {
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 0 0;
+        /*Ocultar container de lista de tarefas para deixar itens de tarefa somente na folha em branco*/
+    }
+    .containerItensTarefa {
+        overflow-y: visible;
+        /*Tirar barra de scroll do container*/
+    }
+    .itemTarefa {
+        border: 1px solid black;
+    }
+}
+/*Adaptar resto depois com JS*/
