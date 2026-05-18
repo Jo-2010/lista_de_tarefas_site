@@ -8,10 +8,11 @@ const containerItensTarefa = document.getElementById("containerItensTarefa");
 const textoListaVazia = containerItensTarefa.querySelector("span");
 
 botaoAdicionarTarefa.addEventListener("click", () => {
-    const dadosTarefa = adicionarTarefaPrincipal(quantTarefas, inputNovaTarefa.value);
+    const IDtarefaNova = crypto.randomUUID();
+    const dadosTarefa = adicionarTarefaPrincipal(IDtarefaNova, prioridadeProximaTarefa, inputNovaTarefa.value);
 
     if(dadosTarefa) {
-        quantTarefas++;
+        prioridadeProximaTarefa++;
 
         spanMensagemExitoErro.classList.remove("mensagemErro");
         spanMensagemExitoErro.classList.add("mensagemExito");
@@ -26,18 +27,18 @@ botaoAdicionarTarefa.addEventListener("click", () => {
 
 inputNovaTarefa.addEventListener("keydown", (event) => {
     if(event.key === 'Enter') {
-        const dadosTarefa = adicionarTarefaPrincipal(quantTarefas, inputNovaTarefa.value);
-
-        setTimeout(() => {
-            spanMensagemExitoErro.textContent = "";
-        }, 3000);
+        const IDtarefaNova = crypto.randomUUID();
+        const dadosTarefa = adicionarTarefaPrincipal(IDtarefaNova, prioridadeProximaTarefa, inputNovaTarefa.value);
 
         if(dadosTarefa) {
-            quantTarefas++;
+            prioridadeProximaTarefa++;
 
             spanMensagemExitoErro.classList.remove("mensagemErro");
             spanMensagemExitoErro.classList.add("mensagemExito");
             spanMensagemExitoErro.textContent = "Tarefa adicionada com sucesso!!!";
+            setTimeout(() => {
+                spanMensagemExitoErro.textContent = "";
+            }, 3000);
 
             adicionarDadosListaPrincipal(dadosTarefa[0], dadosTarefa[1], dadosTarefa[2]);
         }
@@ -53,7 +54,7 @@ botaoLimparTarefas.addEventListener("click", () => {
     atualizarContadorLixeira();
 });
 
-function adicionarTarefaPrincipal(prioridadeTarefa, textoTarefa) {
+function adicionarTarefaPrincipal(IDtarefa, prioridadeTarefa, textoTarefa) {
     if(textoTarefa.trim().length === 0) {
         spanMensagemExitoErro.classList.add("mensagemErro");
         spanMensagemExitoErro.textContent = "Não envie um texto vazio!!!";
@@ -77,7 +78,7 @@ function adicionarTarefaPrincipal(prioridadeTarefa, textoTarefa) {
         const iconeBotaoLimparTarefa = document.createElement("i");
         const caixaCheckboxImpressao = document.createElement("div");
 
-        if(tarefas.listaPrincipal.length === 0) {
+        if(tarefas.listaPrincipal.length >= 0) {
             textoListaVazia.style.display = "none";
             containerItensTarefa.style.justifyContent = "flex-start";
         }
@@ -88,12 +89,21 @@ function adicionarTarefaPrincipal(prioridadeTarefa, textoTarefa) {
         spanTextoTarefa.textContent = textoTarefa;
 
         itemTarefa.classList.add("itemTarefa");
-        itemTarefa.dataset.id = crypto.randomUUID();
+        itemTarefa.dataset.id = IDtarefa; 
         divTextosTarefa.classList.add("textosTarefa");
         divBotoesItemTarefa.classList.add("botoesItemTarefa");
 
         botaoHierarquizarTarefa.classList.add("botaoOpcaoItemTarefa", "botaoHierarquiaTarefa");
         botaoHierarquizarTarefa.setAttribute("data-tooltip", "Hierarquizar");
+        botaoHierarquizarTarefa.addEventListener("click", () => {
+            editarHierarquiaTarefa();
+
+            spanMensagemExitoErro.classList.add("mensagemExito");
+            spanMensagemExitoErro.textContent = "Tarefa hierarquizada com sucesso!!!";
+            setTimeout(() => {
+                spanMensagemExitoErro.textContent = "";
+            }, 3000);
+        });
         iconeBotaoHierarquizarTarefa.classList.add("fa-solid", "fa-list-ol", "fa-lg");
 
         botaoEditarTarefa.classList.add("botaoOpcaoItemTarefa", "botaoEditarTarefa");
@@ -138,7 +148,20 @@ function editarHierarquiaTarefa() {
 }
 
 function ordenarPorPrioridade() {
+    let contPrioridade = 1;
+    const itensTarefaListaPrincipal = Array.from(containerItensTarefa.querySelectorAll("article"));
 
+    itensTarefaListaPrincipal.forEach(tarefa => {
+        tarefa.remove();
+    });
+    tarefas.listaPrincipal.sort((a, b) => a.prioridade - b.prioridade);
+    tarefas.listaPrincipal.forEach(tarefa => {
+        tarefa.prioridade = contPrioridade;
+        contPrioridade++;
+    });
+    prioridadeProximaTarefa = tarefas.listaPrincipal.length + 1;
+
+    renderizarTarefasPrincipais();
 }
 
 function editarTextoTarefa() {
@@ -177,11 +200,6 @@ function limparTarefas() {
 }
 
 function limparTarefa(itemTarefa) {
-    /*Coisas a fazer ainda:
-    4: Configurar edição de hierarquia das tarefas
-    5: Configurar função de reorganizar e renderizar as tarefas em ordem correta, tanto em edição de hierarquia
-    quanto pela limpeza de alguma tarefa
-    */
     const indiceTarefaLimpada = tarefas.listaPrincipal.findIndex(tarefa => tarefa.ID === itemTarefa.dataset.id);
 
     itemTarefa.remove();
@@ -193,4 +211,6 @@ function limparTarefa(itemTarefa) {
     }
 
     adicionarDadosLixeira(itemTarefa.dataset.id, itemTarefa.querySelector('div > [data-js="textoTarefa"]').textContent);
+
+    ordenarPorPrioridade();
 }
