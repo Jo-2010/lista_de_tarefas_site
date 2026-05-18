@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: "Google Sans", Arial, Helvetica, sans-serif;
+    /*Setup básico e padrão para todos os elementos HTML*/
 }
 html, body {
     height: 100%;
@@ -11,53 +12,77 @@ html, body {
     justify-content: center;
     align-items: center;
     position: relative;
-    background-color: rgb(240, 240, 240);
+    background-color: var(--cor-de-fundo-site);
+    /*Setup básico e padrão para deixar tela ocupando altura e largura
+    total da tela, centralizar container da lista de tarefas e colocar cor de fundo
+    no site que o diferencia do branco do container da lista de tarefas*/
 }
 .botaoTema {
-    height: 30px;
-    width: 30px;
+    width: clamp(22px, 3vw, 30px);
+    height: clamp(22px, 3vw, 30px);
+    font-size: clamp(0.7rem, 1.5vw, 1rem);
+    border: none;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 2.5px;
-    left: 2.5px;
+    top: clamp(2px, 1vw, 8px);
+    left: clamp(2px, 1vw, 8px);
     cursor: pointer;
-}
-.botaoTema:hover, .botaoFiltrar:hover, .botaoLixeira:hover {
-    transition: 0.2s ease;
-    background-color: rgb(210, 210, 210);
+    background: none;
+    color: var(--cor-icones-navegacao-e-tema);
+    /*Botão de tema claro e escuro que fica colado no canto superior esquerdo
+    em relação as tags html/body, fixado sempre lá em relação a tela*/
 }
 .containerListaDeTarefas {
     height: 90%;
     width: 90%;
     border-radius: 10px;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.250);
-    background-color: white;
+    box-shadow: 5px 5px 20px var(--cor-sombra-lista);
+    background-color: var(--cor-de-fundo-lista);
     display: flex;
     flex-direction: column;
+    /*Container onde fica os botões de navegação na lista entre as várias opções 
+    de gerenciamento, título, inputs, botões de enviar e apagar e os itens de tarefa*/
 }
 .cabecalhoListaDeTarefas {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /*Cabeçalho da lista de tarefas que contém 2 botões de navegação e um título*/
 }
-.botaoFiltrar, .botaoLixeira {
-    height: 40px;
-    width: 40px;
-    margin-left: 10px;
-    margin-right: 10px;
+.cabecalhoListaDeTarefas h1 {
+    color: var(--cor-letras-titulos-textosImportantes);
+}
+.botaoFiltrar, .botaoLixeira, .botaoListaPrincipal, .botaoFiltrarLixeira {
+    width: clamp(30px, 4vw, 45px);
+    height: clamp(30px, 4vw, 45px);
+    font-size: clamp(0.9rem, 2vw, 1.3rem);
+    margin-left: 5px;
+    margin-right: 5px;
+    border: none;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    position: relative;
+    background: none;
+    color: var(--cor-icones-navegacao-e-tema);
+    /*Modelo padrão dos botões de navegação na lista. Classes com nomes diferentes para identificação
+    durante interatividade web, não alteram design significativamente*/
+}
+.botaoTema:hover, .botaoFiltrar:hover, .botaoLixeira:hover, .botaoListaPrincipal:hover, .botaoFiltrarLixeira:hover {
+    transition: 0.2s ease;
+    background-color: var(--cor-de-fundo-icones-navegacao-e-tema-hover);
+    /*Animação de hover comum entre todos os botões de navegação na lista*/
 }
 .tituloListaDeTarefas {
-    font-size: 1.5rem;
+    font-size: clamp(0.9rem, 1.7vw, 2rem);
     white-space: nowrap;
+    /*Classe do título da lista de tarefas e demasiadas opções com título*/
 }
 .containerInputsBotoes {
     margin-left: 10px;
@@ -69,38 +94,97 @@ html, body {
     grid-template-areas: 
     'inputTarefas botaoAdicionarTarefa'
     'botaoExcluirTarefa botaoExcluirTarefa';
+    /*Setup padrão do container com o input e botões iniciais pra digitar tarefa, adicionar tarefa
+    e excluir todas as tarefas*/
 }
-.inputTarefas {
+.inputNovasTarefas {
     height: 2.5rem;
-    padding: 0.4rem;
-    border: 1px solid gray;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    border: 1px solid var(--cor-borda-input-nova-tarefa);
     border-radius: 5px;
-    font-size: 0.9rem;
     grid-area: inputTarefas;
+    /*Input inicial de "Nova tarefa" na lista principal (Sua div que simula o input)*/
+}
+.inputNovasTarefas input {
+    height: 100%;
+    width: 100%;
+    padding: 0.4rem 30px 0.4rem 0.4rem;
+    border: none;
+    border-radius: 5px;
+    font-size: clamp(0.75rem, 1.7vw, 1rem);
+    background-color: var(--cor-de-fundo-input-nova-tarefa);
+    color: var(--cor-texto-input-nova-tarefa);
+    /*Input inicial de "Nova tarefa" na lista principal (Agora o input de fato)*/
+}
+.inputNovasTarefas input:focus {
+    outline: 2px solid var(--cor-borda-input-nova-tarefa-focus);
+    /*Borda do input quando focado*/
+}
+.inputNovasTarefas input::placeholder {
+    color: var(--cor-letras-placeholder);
+}
+.botaoLimparInput {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    color: var(--cor-icone-limpar-input);
+}
+.botaoLimparInput > i:hover {
+    transition: 0.2s;
+    color: var(--cor-icone-limpar-input-hover);
+}
+.inputNovasTarefas i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*Botão de apagar conteúdo do input via clique*/
+}
+.inputNovasTarefas i:hover {
+    transition: 0.2s;
+    color: var(--cor-icone-limpar-input-hover);
+    /*Animação do botão de apagar conteúdo do input via clique*/
 }
 .botaoAdicionarTarefa {
     height: 2.5rem;
     border: none;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: clamp(0.55rem, 1.7vw, 1rem);
     color: white;
-    background-color: rgb(0, 230, 0);
+    background-color: var(--cor-coisas-verdes);
     cursor: pointer;
     grid-area: botaoAdicionarTarefa;
+    /*Botão de adicionar tarefa (Servirá para simulação de estilização de botões posteriores)*/
 }
 .botaoLimparTarefas {
     height: 2.5rem;
     border: none;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: clamp(0.55rem, 1.7vw, 1rem);
     color: white;
-    background-color: red;
+    background-color: var(--cor-coisas-vermelhas);
     cursor: pointer;
     grid-area: botaoExcluirTarefa;
+    /*Botão de mandar todas as tarefas e mandá-las 
+    pra lixeira (Servirá para simulação de estilização de botões posteriores)*/
 }
 .botaoAdicionarTarefa:hover, .botaoLimparTarefas:hover, .botaoOpcaoItemTarefa:hover {
     transition: 0.3s ease;
     opacity: 0.8;
+    /*Animação de hover para os botões de adicionar e limpar todas as tarefas, e também pros
+    botões de item de tarefa, como edição e limpar tarefa pra lixeira*/
 }
 .containerMensagensExitoErro {
     height: 50px;
@@ -108,56 +192,232 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    /*Container onde fica as mensagens de exito e erro nas ações de gestão da lista de tarefas*/
 }
 .containerItensTarefa {
     margin: 0 10px 10px 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     flex: 1;
+    overflow-x: hidden;
     overflow-y: auto;
+    /*Container onde são exibidos os itens de tarefa, seja na lista principal, filtração na busca de tarefas
+    e lixeira*/
 }
-.itemTarefa {
+.mensagemListaVazia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 2vw, 2rem);
+    color: var(--cor-letras-titulos-textosImportantes);
+    /*Mensagem que fica na lista de tarefas quando ela está vazia, e será usada posteriormente
+    para outras opções da lista, como na busca de tarefas e lixeira*/
+}
+/* Classes pra interatividade JS*/
+.mensagemExito {
+    color: var(--cor-coisas-verdes);
+    /*Cor do texto do container de mensagens de exito e erro para comandos que deram certo*/
+}
+.mensagemErro {
+    color: var(--cor-coisas-vermelhas);
+    /*Cor do texto do container de mensagens de exito e erro para comandos que deram errado*/
+}
+.itemTarefa, .itemTarefaLixeira {
     height: 60px;
+    width: 100%;
     padding: 10px;
     border-radius: 5px;
-    background-color: rgb(210, 210, 210);
+    background-color: var(--cor-de-fundo-item-tarefa);
     flex-shrink: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /*Molde do item de tarefa padrão criado pelo JS pros textos enviados pelo usuário*/
 }
-.textosTarefa {
+.textosTarefa, .textosTarefaLixeira {
     width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: var(--cor-textos-tarefa);
+    /*Container que fica os 2 textos dentro do item de tarefa: O número da hierarquia da tarefa
+    e o texto da tarefa em si*/
 }
-.botoesItemTarefa {
+.botoesItemTarefa, .botoesItemTarefaLixeira {
     height: 35px;
     display: flex;
     gap: 5px;
+    /*Container que fica os botões de hierarquia, editar e limpar tarefa pra lixeira dentro do item de tarefa*/
 }
-.botaoOpcaoItemTarefa {
+.botaoOpcaoItemTarefa, .botaoOpcaoItemTarefaLixeira {
     height: 100%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    /*Botão de opção dentro do item de tarefa, modelo padrão*/
 }
 .botaoHierarquiaTarefa {
-    background-color: blue;
+    background-color: var(--cor-coisas-azuis);
     color: white;
+    /*Botão de hierarquia da tarefa*/
 }
 .botaoEditarTarefa {
-    background-color: rgb(0, 230, 0);
+    background-color: var(--cor-coisas-verdes);
     color: white;
+    /*Botão de editar tarefa*/
 }
 .botaoLimparTarefa {
-    background-color: red;
+    background-color: var(--cor-coisas-vermelhas);
     color: white;
+    /*Botão de limpar tarefa pra lixeira*/
 }
-/* Classes pra interatividade JS*/
-.mensagemExito {
-    color: rgb(0, 230, 0);
+.itemTarefaEdicaoTexto, .itemTarefaEdicaoHierarquia {
+    height: 60px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--cor-de-fundo-item-tarefa);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    /*Modelo de item de tarefa com input para edição do texto ativado via botão de editar tarefa*/
+    /*Modelo de item de tarefa com input para edição da hierarquia ativado via botão de hierarquizar tarefa*/
 }
-.mensagemErro {
-    color: red;
+.textosTarefaEdicaoTexto, .textosTarefaEdicaoHierarquia {
+    height: 90%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /*Container onde fica o texto de hierarquia e input de edição do texto da tarefa*/
+    /*Container onde fica o input de edição da hierarquia e o texto da tarefa*/
 }
+.textosTarefaEdicaoTexto div.divInputEdicaoTexto  {
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    position: relative;
+    /*Container onde fica o input de edição do texto da tarefa, necessário para posicionar o botão de limpar conteúdo do input dentro dele via position absolute*/
+}
+.textosTarefaEdicaoTexto input {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0.4rem 30px 0.4rem 0.4rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--cor-texto-inputs-edicao);
+    background-color: var(--cor-de-fundo-inputs-edicao);
+    /*Estilização do input de edição do texto da tarefa*/
+}
+.textosTarefaEdicaoTexto input:focus, .textosTarefaEdicaoHierarquia input:focus, .inputPesquisaTarefas input:focus {
+    outline: 2px solid var(--cor-borda-inputs-edicao-focus);
+    /*Input de edição do texto da tarefa quando está em foco*/
+    /*Input de edição da hierarquia da tarefa quando está em foco*/
+    /*Input de busca de tarefas quando está em foco*/
+}
+.itemTarefaEdicaoTexto > button, .itemTarefaEdicaoHierarquia > button {
+    height: 90%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--cor-coisas-verdes);
+    color: white;
+    cursor: pointer;
+    /*Botão dentro do item de tarefa em edição que confirma a edição do texto*/
+    /*Botão dentro do item de tarefa em edição que confirma a edição da hierarquia*/
+}
+.itemTarefaEdicaoTexto > .botaoConcluirEdicao:hover, .itemTarefaEdicaoHierarquia > .botaoConcluirEdicao:hover {
+    transition: 0.3s ease;
+    opacity: 0.8;
+    /*Animação ao passar o mouse sobre o botão de confirmação da edição*/
+    /*Animação ao passar o mouse sobre o botão de confirmação da edição*/
+}
+.textosTarefaEdicaoHierarquia div.divInputEdicaoHierarquia  {
+    height: 100%;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    position: relative;
+    /*Container onde fica o input de edição da hierarquia da tarefa, necessário para posicionar o botão de limpar conteúdo do input dentro dele via position absolute*/
+}
+.textosTarefaEdicaoHierarquia input {
+    height: 100%;
+    width: 60px;
+    padding: 0.4rem 30px 0.4rem 0.4rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--cor-texto-inputs-edicao);
+    background-color: var(--cor-de-fundo-inputs-edicao);
+    /*Estilização do input de edição da hierarquia da tarefa*/
+}
+.inputPesquisaTarefas {
+    height: 40px;
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 20px;
+    position: relative;
+    /*Estilização do input de busca de tarefas (div)*/
+}
+.inputPesquisaTarefas input {
+    height: 100%;
+    width: 100%;
+    padding: 0.4rem 30px 0.4rem 0.4rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(210, 210, 210);
+    /*Estilização do input de busca de tarefas (input)*/
+}
+.inputPesquisaTarefas i {
+    position: absolute;
+    right: 5px;
+    top: 19.5px;
+    cursor: pointer;
+    /*Estilização do botão de limpar conteúdo do input de busca de tarefas e posicionando-o
+    via position absolute*/
+    /*Mudar estilização do botão de limpar input de pesquisa depois*/
+}
+.miniLixo {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    /*Mini ícone de lixo que ficará junto do ícone de buscar tarefas, representando a busca
+    na lixeira*/
+}
+/*Coisas pra impressão da lista de tarefas*/
+.caixaCheckImpressao {
+    display: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    height: 90%;
+    width: 35px;
+    background-color: white;
+    /*Caixa de check para usuário, na vida real, marcar conlusão da tarefa. Adicioná-los na criação do item da tarefa*/
+}
+/*Ícone de notificação da lixeira (quantidade de tarefas na lixeira)*/
+.notificacaoLixeira {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    height: clamp(0.9rem, 1vw, 0.7rem);
+    width: clamp(0.9rem, 1vw, 0.7rem);
+    font-size: clamp(0.5rem, 1vw, 0.7rem);
+    border-radius: 50%;
+    opacity: 0.8;
+    color: white;
+    background-color: var(--cor-coisas-vermelhas);
+}
+/*-------------------*/
 /*---------------*/
