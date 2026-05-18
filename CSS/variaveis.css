@@ -1,0 +1,79 @@
+:root {
+    --cor-de-fundo-site: rgb(240, 240, 240);
+    --cor-de-fundo-lista: white;
+    --cor-letras-titulos-textosImportantes: black;
+    --cor-sombra-lista: rgba(0, 0, 0, 0.250);
+    --cor-icones-navegacao-e-tema: black;
+    --cor-de-fundo-icones-navegacao-e-tema-hover: rgb(210, 210, 210);
+    --cor-de-fundo-tooltips: black;
+    --cor-letras-tooltips: white;
+    --cor-de-fundo-input-nova-tarefa: white;
+    --cor-borda-input-nova-tarefa: gray;
+    --cor-letras-placeholder: gray;
+    --cor-borda-input-nova-tarefa-focus: black;
+    --cor-texto-input-nova-tarefa: black;
+    --cor-icone-limpar-input: black;
+    --cor-icone-limpar-input-hover: red;
+    --cor-coisas-verdes: rgb(0, 230, 0);
+    --cor-coisas-azuis: blue;
+    --cor-coisas-vermelhas: red;
+    --cor-de-fundo-item-tarefa: rgb(210, 210, 210);
+    --cor-textos-tarefa: black;
+    --cor-de-fundo-inputs-edicao: rgb(240, 248, 255);
+    --cor-texto-inputs-edicao: black;
+    --cor-borda-inputs-edicao-focus: black;
+    --cor-de-fundo-input-pesquisa: rgb(210, 210, 210);
+}
+.temaClaro {
+    --cor-de-fundo-site: rgb(240, 240, 240);
+    --cor-de-fundo-lista: white;
+    --cor-letras-titulos-textosImportantes: black;
+    --cor-sombra-lista: rgba(0, 0, 0, 0.250);
+    --cor-icones-navegacao-e-tema: black;
+    --cor-de-fundo-icones-navegacao-e-tema-hover: rgb(210, 210, 210);
+    --cor-de-fundo-tooltips: black;
+    --cor-letras-tooltips: white;
+    --cor-de-fundo-input-nova-tarefa: white;
+    --cor-borda-input-nova-tarefa: gray;
+    --cor-letras-placeholder: gray;
+    --cor-borda-input-nova-tarefa-focus: black;
+    --cor-texto-input-nova-tarefa: black;
+    --cor-icone-limpar-input: black;
+    --cor-icone-limpar-input-hover: red;
+    --cor-coisas-verdes: rgb(0, 230, 0);
+    --cor-coisas-azuis: blue;
+    --cor-coisas-vermelhas: red;
+    --cor-de-fundo-item-tarefa: rgb(210, 210, 210);
+    --cor-textos-tarefa: black;
+    --cor-de-fundo-inputs-edicao: rgb(240, 248, 255);
+    --cor-texto-inputs-edicao: black;
+    --cor-borda-inputs-edicao-focus: black;
+    --cor-de-fundo-input-pesquisa: rgb(210, 210, 210);
+}
+.temaEscuro {
+    --cor-de-fundo-site: black;
+    --cor-de-fundo-lista: rgb(50, 50, 50);
+    --cor-letras-titulos-textosImportantes: white;
+    --cor-sombra-lista: rgba(255, 255, 255, 0.250);
+    --cor-icones-navegacao-e-tema: white;
+    --cor-de-fundo-icones-navegacao-e-tema-hover: rgb(130, 130, 130);
+    --cor-de-fundo-tooltips: white;
+    --cor-letras-tooltips: black;
+    --cor-de-fundo-input-nova-tarefa: rgb(50, 50, 50);
+    --cor-borda-input-nova-tarefa: gray;
+    --cor-letras-placeholder: rgb(210, 210, 210);
+    --cor-borda-input-nova-tarefa-focus: white;
+    --cor-texto-input-nova-tarefa: white;
+    --cor-icone-limpar-input: rgb(5, 5, 5);
+    --cor-icone-limpar-input-hover: rgb(178, 34, 34);
+    --cor-coisas-verdes: rgb(34, 139, 34);
+    --cor-coisas-azuis: rgb(25, 25, 112);
+    --cor-coisas-vermelhas: rgb(178, 34, 34);
+    --cor-de-fundo-item-tarefa: rgb(120, 120, 120);
+    --cor-textos-tarefa: white;
+    --cor-de-fundo-inputs-edicao: rgb(101, 119, 134);
+    --cor-texto-inputs-edicao: white;
+    --cor-borda-inputs-edicao-focus: white;
+    --cor-de-fundo-input-pesquisa: rgb(210, 210, 210); /*Modificar futuramante*/
+    /*Variáveis de cor ainda estão sujeitas a adições e alterações*/
+}

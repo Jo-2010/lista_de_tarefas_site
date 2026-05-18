@@ -1,0 +1,51 @@
+/*Criação dos tooltips:*/
+[data-tooltip] {
+    position: relative;
+}
+[data-tooltip].botaoTema, [data-tooltip].botaoLimparInput{
+    position: absolute;
+    z-index: 9999;
+}
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--cor-de-fundo-tooltips);
+    color: var(--cor-letras-tooltips);
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.2s ease;
+    z-index: 9999;
+}
+[data-tooltip].botaoTema::after {
+    left: 40px;
+}
+[data-tooltip].botaoHierarquiaTarefa::after {
+    background-color: var(--cor-coisas-azuis);
+    color: white;
+}
+[data-tooltip].botaoEditarTarefa::after {
+    background-color: var(--cor-coisas-verdes);
+    color: white;
+}
+[data-tooltip].botaoLimparTarefa::after {
+    background-color: var(--cor-coisas-vermelhas);
+    color: white;
+}
+[data-tooltip].botaoConcluirEdicao::after {
+    font-size: 0.7rem;
+    padding: 3px 5px;
+    background-color: var(--cor-coisas-verdes);
+    color: white;
+}
+[data-tooltip]:hover::after {
+    opacity: 1;
+}
+/*Se atentar a possíveis tooltips a escrever e configurar depois*/
+/*-----------------------*/
